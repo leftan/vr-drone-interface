@@ -1,10 +1,11 @@
 ﻿namespace VRTK
 {
-using System.Collections;
+    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class SpawnDrone : MonoBehaviour {
+    public class SpawnDrone : MonoBehaviour
+    {
 
         public GameObject drone;
         public GameObject mainMenu;
@@ -19,16 +20,18 @@ using System.Collections;
         private Vector3 groundPoint;
 
         // Use this for initialization
-	    void Start () {
+        void Start()
+        {
             world = GameObject.FindGameObjectWithTag("World");
             controller = GameObject.FindGameObjectWithTag("GameController");
             menuState = false;
             toggleMenuStopper = true;
             mainMenu.SetActive(menuState);
         }
-	
-	    // Update is called once per frame
-	    void Update () {
+
+        // Update is called once per frame
+        void Update()
+        {
 
             if (OVRInput.Get(OVRInput.Button.One))
             {
@@ -38,17 +41,21 @@ using System.Collections;
                     menuState = !menuState;
                     toggleMenuStopper = false;
                 }
-            } else
+            }
+            else
             {
                 toggleMenuStopper = true;
             }
 
-            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+            Debug.Log(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger));
+        
+            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.Button.Two))
             {
+                Debug.Log("it si not working!!!");
                 ChooseGroundPoint();
                 controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
             }
-	    }
+        }
 
         public void OnClick()
         {
@@ -67,15 +74,15 @@ using System.Collections;
         private void ChooseGroundPoint()
         {
             Vector3 groundPoint = controller.GetComponent<VRTK_StraightPointerRenderer>().GetGroundPoint();
-            groundPoint.y = groundPoint.y+0.5f* world.GetComponent<ControllerInteractions>().actualScale.y;
+            groundPoint.y = groundPoint.y + 0.5f * world.GetComponent<ControllerInteractions>().actualScale.y;
             Instantiate(drone, groundPoint, Quaternion.identity, world.transform);
             placingDrone = false;
         }
-        
+
         // Returns the height taking the scale into account
         private float MaxHeight()
         {
-            return 1+(float)((1.0008874438 * 1.5 - 0.7616114718) * world.GetComponent<ControllerInteractions>().actualScale.y + .703);
+            return 1 + (float)((1.0008874438 * 1.5 - 0.7616114718) * world.GetComponent<ControllerInteractions>().actualScale.y + .703);
         }
     }
 }

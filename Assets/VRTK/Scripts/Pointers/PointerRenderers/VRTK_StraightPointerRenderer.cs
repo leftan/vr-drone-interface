@@ -346,6 +346,7 @@
         public void placingDrone()
         {
             setDrone = !setDrone;
+            Debug.Log("We are placing a drone");
         }
         // SETTING DRONE
 
@@ -355,10 +356,34 @@
             setWaypoint = !setWaypoint;
         }
 
+        public GameObject[] groundPrefabs;
+        public MeshCollider[] terrain;
+
         private void OnGround(bool rayHit, RaycastHit pointerCollidedWith)
         {
-            Collider terrain = GameObject.FindGameObjectWithTag("Ground").GetComponent<MeshCollider>();
-            onGround = (rayHit && (pointerCollidedWith.collider.Equals(terrain)));
+            groundPrefabs = GameObject.FindGameObjectsWithTag("Ground");
+            terrain = new MeshCollider[groundPrefabs.Length];
+            bool hitTerrain = false;
+
+            for(int i = 0; i<groundPrefabs.Length; i++)
+            {
+                terrain[i] = groundPrefabs[i].GetComponent<MeshCollider>();
+            }
+
+            for (int i = 0; i < terrain.Length; i++)
+            {
+                if (pointerCollidedWith.collider != null)
+                {
+                    if (pointerCollidedWith.collider.Equals(terrain[i]))
+                    {
+                        hitTerrain = true;
+                    }
+            
+                }
+
+            }
+
+            onGround = (rayHit && hitTerrain);
         }
 
         public bool OnGround()

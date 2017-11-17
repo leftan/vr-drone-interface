@@ -16,4 +16,6 @@ MonoBehaviour:
   _key: building
   Filters: []
   _defaultStack: {fileID: 11400000, guid: b5713e21bdbdc4cb58770af0b9004c60, type: 2}
-  Stacks: []
+  Stacks:
+  - Type: school
+    Stack: {fileID: 11400000, guid: 03d44a71e6bd9fd4e9b0065778edf2bc, type: 2}

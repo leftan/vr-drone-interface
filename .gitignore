@@ -41,3 +41,4 @@ sysinfo.txt
 .DS_Store
 *.swp
 StyleCop*
+Assets/Scripts/Drone Scripts/SpawnDrone.cs

@@ -245,6 +245,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 2
+    generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!135 &135236038760155038

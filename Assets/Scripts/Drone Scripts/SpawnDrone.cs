@@ -43,7 +43,8 @@ using System.Collections;
                 toggleMenuStopper = true;
             }
 
-            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+            //Debug.Log(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger));
+            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.Button.Two))
             {
                 ChooseGroundPoint();
                 controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
@@ -54,6 +55,7 @@ using System.Collections;
         {
             controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
             placingDrone = true;
+           // Debug.Log("OnClick is working");
             mainMenu.SetActive(false);
             menuState = !menuState;
             GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
@@ -70,6 +72,7 @@ using System.Collections;
             groundPoint.y = groundPoint.y+0.5f* world.GetComponent<ControllerInteractions>().actualScale.y;
             Instantiate(drone, groundPoint, Quaternion.identity, world.transform);
             placingDrone = false;
+            //Debug.Log(pointerCollidedWith.point.y + " point");
         }
         
         // Returns the height taking the scale into account

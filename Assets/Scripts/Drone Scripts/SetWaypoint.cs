@@ -1,4 +1,4 @@
-namespace VRTK
+﻿namespace VRTK
 {
     using System;
     using System.Collections;
@@ -60,12 +60,12 @@ namespace VRTK
                 UpdateScale();
 
                 // Allows user to select a groundpoint which a new waypoint will appear above
-                if (controller.GetComponent<VRTK_StraightPointerRenderer>().IsSettingWaypoint() && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+                if (controller.GetComponent<VRTK_StraightPointerRenderer>().IsSettingWaypoint() && OVRInput.GetDown(OVRInput.Button.Two))
                 {
                     adjustingWaypoint = SetGroundpoint();
                     adjustingHeight = true;
                 }
-                if (adjustingHeight && !firstClickFinished && OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
+                if (adjustingHeight && !firstClickFinished && OVRInput.GetUp(OVRInput.Button.Two))
                 {
                     firstClickFinished = true;
                 }
@@ -76,7 +76,7 @@ namespace VRTK
                 }
 
                 // Allows user to clear the most recently placed waypoint
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.Two))
                 {
                     if (clearWaypointsToggle)
                     {
@@ -152,9 +152,9 @@ namespace VRTK
             float height = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch).x / 40;
             newWaypoint.transform.Translate(0f, height, 0f);
 
-            adjustingHeight = !OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
-            firstClickFinished = !OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
-            settingInterWaypoint = !OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
+            adjustingHeight = !OVRInput.Get(OVRInput.Button.Two);
+            firstClickFinished = !OVRInput.Get(OVRInput.Button.Two);
+            settingInterWaypoint = !OVRInput.Get(OVRInput.Button.Two);
         }
 
         // Returns the maximum height that the waypoint can be placed

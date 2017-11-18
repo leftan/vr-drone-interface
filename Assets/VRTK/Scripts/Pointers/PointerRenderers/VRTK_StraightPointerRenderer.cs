@@ -346,7 +346,8 @@
         public void placingDrone()
         {
             setDrone = !setDrone;
-            Debug.Log("We are placing a drone");
+            Debug.Log("drone placed!");
+            
         }
         // SETTING DRONE
 
@@ -424,7 +425,8 @@
         {
             if (rayhit && pointerCollidedWith.collider.tag == "Drone")
             {
-                if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+                Debug.Log(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger));
+                if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
                 {
                     if (selectDroneToggle)
                     {

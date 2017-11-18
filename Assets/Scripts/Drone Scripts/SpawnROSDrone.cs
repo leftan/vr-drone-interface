@@ -43,7 +43,7 @@ using System.Collections;
                 toggleMenuStopper = true;
             }
 
-            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.GetDown(OVRInput.Button.Two))
             {
                 ChooseGroundPoint();
                 controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();

@@ -19,6 +19,8 @@ TagManager:
   - Drone
   - Line Collider
   - Floor
+  - Pointer
+  - BluePointer
   layers:
   - Default
   - TransparentFX

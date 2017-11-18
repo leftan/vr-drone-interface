@@ -106,7 +106,7 @@
                     waypointLine.startWidth = world.GetComponent<ControllerInteractions>().actualScale.y / 100;
                     waypointLine.endWidth = world.GetComponent<ControllerInteractions>().actualScale.y / 100;
 
-                    if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
+                    if (OVRInput.Get(OVRInput.Button.Two))
                     {
                         if (setInterwaypointToggle)
                         {

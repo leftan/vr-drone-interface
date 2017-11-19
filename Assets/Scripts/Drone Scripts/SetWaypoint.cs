@@ -60,12 +60,12 @@
                 UpdateScale();
 
                 // Allows user to select a groundpoint which a new waypoint will appear above
-                if (controller.GetComponent<VRTK_StraightPointerRenderer>().IsSettingWaypoint() && OVRInput.GetDown(OVRInput.Button.Two))
+                if (controller.GetComponent<VRTK_StraightPointerRenderer>().IsSettingWaypoint() && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) != 0)
                 {
                     adjustingWaypoint = SetGroundpoint();
                     adjustingHeight = true;
                 }
-                if (adjustingHeight && !firstClickFinished && OVRInput.GetUp(OVRInput.Button.Two))
+                if (adjustingHeight && !firstClickFinished && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) == 0)
                 {
                     firstClickFinished = true;
                 }
@@ -76,16 +76,16 @@
                 }
 
                 // Allows user to clear the most recently placed waypoint
-                if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.Button.Two))
-                {
-                    if (clearWaypointsToggle)
-                    {
-                        ClearWaypoint();
-                    }
-                } else
-                {
-                    clearWaypointsToggle = true;
-                }
+                //if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)!=0)
+                //{
+                //    if (clearWaypointsToggle)
+                //    {
+                //        ClearWaypoint();
+                //    }
+                //} else
+                //{
+                //    clearWaypointsToggle = true;
+                //}
             } else
             {
                 // Changes the drones color to indicated that it has been unselected
@@ -152,9 +152,18 @@
             float height = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch).x / 40;
             newWaypoint.transform.Translate(0f, height, 0f);
 
-            adjustingHeight = !OVRInput.Get(OVRInput.Button.Two);
-            firstClickFinished = !OVRInput.Get(OVRInput.Button.Two);
-            settingInterWaypoint = !OVRInput.Get(OVRInput.Button.Two);
+            if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) != 0)
+            {
+                adjustingHeight = false;
+                firstClickFinished = false;
+                settingInterWaypoint = false;
+            } else
+            {
+                adjustingHeight = true;
+                firstClickFinished = true;
+                settingInterWaypoint = true;
+            }
+
         }
 
         // Returns the maximum height that the waypoint can be placed

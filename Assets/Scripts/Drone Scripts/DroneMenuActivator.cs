@@ -11,6 +11,7 @@
         public bool selected;
 
         private GameObject controller; // refers to the right controller
+        //private 
         private int frameCounter; // used to deactivate menu
         private int menuTimer; // used to deactivate menu
         public bool menuOn; // indicates whether menu is activated currently
@@ -20,6 +21,7 @@
             selected = true;
             menuOn = false;
             controller = GameObject.FindGameObjectWithTag("GameController");
+            //buttonOneTooltip = GameObject.FindGameObjectWithTag("ControllerTooltip");
             droneMenu = Instantiate(droneMenu);
             droneMenu.SetActive(false);
             droneMenu.GetComponent<ReferenceDrone>().referenceDrone = this.gameObject;

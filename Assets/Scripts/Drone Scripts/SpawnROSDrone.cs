@@ -46,13 +46,13 @@ using System.Collections;
             if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.GetDown(OVRInput.Button.Two))
             {
                 ChooseGroundPoint();
-                controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
+                controller.GetComponent<VRTK_StraightPointerRenderer>().PlacingDrone();
             }
 	    }
 
         public void OnClick()
         {
-            controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
+            controller.GetComponent<VRTK_StraightPointerRenderer>().PlacingDrone();
             placingDrone = true;
             mainMenu.SetActive(false);
             menuState = !menuState;

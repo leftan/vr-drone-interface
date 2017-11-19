@@ -45,27 +45,22 @@
             else
             {
                 toggleMenuStopper = true;
-            }
+            }      
 
-<<<<<<< HEAD
-            //Debug.Log(OVRInput.Get(OVRInput.Button.SecondaryHandTrigger));
-=======
-            Debug.Log(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger));
-        
->>>>>>> bc3ea4eab3812c29b4b1ee21232196ac724e5a66
-            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.Button.Two))
+            if (placingDrone && controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround() && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)!=0)
             {
-                Debug.Log("it si not working!!!");
+                //Debug.Log("Button two is working!!!");
                 ChooseGroundPoint();
-                controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
+                controller.GetComponent<VRTK_StraightPointerRenderer>().PlacingDrone();
             }
         }
 
         public void OnClick()
         {
-            controller.GetComponent<VRTK_StraightPointerRenderer>().placingDrone();
+            controller.GetComponent<VRTK_StraightPointerRenderer>().PlacingDrone();
+            Debug.Log("OnClick is working");
             placingDrone = true;
-           // Debug.Log("OnClick is working");
+            
             mainMenu.SetActive(false);
             menuState = !menuState;
             GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");

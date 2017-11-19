@@ -33,7 +33,7 @@
         {
             Debug.Log("it is working");
             //pointers = GameObject.FindGameObjectsWithTag("Pointer");
-            bluePointer = GameObject.FindGameObjectWithTag("bluePointer");
+            bluePointer = GameObject.FindGameObjectWithTag("BluePointer");
             bluePointerPosition = bluePointer.transform.position;
             waypoints = GameObject.FindGameObjectsWithTag("waypoint");
             drone = GameObject.FindGameObjectWithTag("Drone");

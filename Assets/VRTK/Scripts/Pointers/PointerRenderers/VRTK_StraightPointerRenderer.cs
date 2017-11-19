@@ -343,10 +343,10 @@
         }
 
         // SETTING DRONE
-        public void placingDrone()
+        public void PlacingDrone()
         {
             setDrone = !setDrone;
-            Debug.Log("drone placed!");
+            // Debug.Log("drone placed!");
             
         }
         // SETTING DRONE

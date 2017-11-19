@@ -31,7 +31,7 @@
 
         void Update()
         {
-            Debug.Log("it is working");
+
             //pointers = GameObject.FindGameObjectsWithTag("Pointer");
             bluePointer = GameObject.FindGameObjectWithTag("BluePointer");
             bluePointerPosition = bluePointer.transform.position;
@@ -42,13 +42,13 @@
                 dronePosition = drone.transform.position;
             }
             
-            Debug.Log("drone position: " + dronePosition);
+            //Debug.Log("drone position: " + dronePosition);
             absDroneX = Mathf.Abs(dronePosition.x - bluePointerPosition.x);
             absDroneZ = Mathf.Abs(dronePosition.z - bluePointerPosition.z);
             absDroneDistance = Mathf.Sqrt(absDroneX * absDroneX + absDroneZ * absDroneZ);
 
             // Debug.Log("Drone Position X: " + dronePosition.x + "Pointer Position X: " + pointerPosition.x + "Drone Position Z: " + dronePosition.z + "Pointer Position Z: " + pointerPosition.z +  "absDroneX " + absDroneX + "absDroneZ " + absDroneZ);
-            Debug.Log("absDroneDistance: " + absDroneDistance);
+            //Debug.Log("absDroneDistance: " + absDroneDistance);
             if (absDroneDistance < 0.3)
             {
                

@@ -58,7 +58,7 @@
         public void OnClick()
         {
             controller.GetComponent<VRTK_StraightPointerRenderer>().PlacingDrone();
-            Debug.Log("OnClick is working");
+            //Debug.Log("OnClick is working");
             placingDrone = true;
             
             mainMenu.SetActive(false);

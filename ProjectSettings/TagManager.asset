@@ -21,6 +21,8 @@ TagManager:
   - Floor
   - Pointer
   - BluePointer
+  - ControllerTooltip
+  - TutorialWelcome
   layers:
   - Default
   - TransparentFX

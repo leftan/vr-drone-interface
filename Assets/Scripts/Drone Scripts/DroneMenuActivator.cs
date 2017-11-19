@@ -4,7 +4,8 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class DroneMenuActivator : MonoBehaviour {
+    public class DroneMenuActivator : MonoBehaviour
+    {
 
         public GameObject drone; // refers to drone object
         public GameObject droneMenu; // refers to Drone Menu UI
@@ -27,8 +28,9 @@
             droneMenu.GetComponent<ReferenceDrone>().referenceDrone = this.gameObject;
         }
 
-        void Update ()
+        void Update()
         {
+            //Debug.Log("drone activeself" + drone.activeSelf);
             if (!drone.activeSelf)
             {
                 droneMenu.SetActive(false);
@@ -41,11 +43,12 @@
                 {
                     PositionDroneMenu();
                 }
-            } else
+            }
+            else
             {
                 droneMenu.SetActive(false);
             }
-	    }
+        }
 
         // Activates the drone menu
         public void ActivateDroneMenu()
@@ -72,7 +75,9 @@
                 {
                     menuOn = false;
                     droneMenu.SetActive(false);
-                } else if (controller.GetComponentInParent<VRTK_StraightPointerRenderer>().IsSettingWaypoint()) {
+                }
+                else if (controller.GetComponentInParent<VRTK_StraightPointerRenderer>().IsSettingWaypoint())
+                {
                     menuOn = false;
                     droneMenu.SetActive(false);
                 }

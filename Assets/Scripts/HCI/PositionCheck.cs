@@ -34,7 +34,10 @@
 
             //pointers = GameObject.FindGameObjectsWithTag("Pointer");
             bluePointer = GameObject.FindGameObjectWithTag("BluePointer");
-            bluePointerPosition = bluePointer.transform.position;
+            if (bluePointer != null)
+            {
+                bluePointerPosition = bluePointer.transform.position;
+            }
             waypoints = GameObject.FindGameObjectsWithTag("waypoint");
             drone = GameObject.FindGameObjectWithTag("Drone");
             if (drone != null)
@@ -49,11 +52,15 @@
 
             // Debug.Log("Drone Position X: " + dronePosition.x + "Pointer Position X: " + pointerPosition.x + "Drone Position Z: " + dronePosition.z + "Pointer Position Z: " + pointerPosition.z +  "absDroneX " + absDroneX + "absDroneZ " + absDroneZ);
             //Debug.Log("absDroneDistance: " + absDroneDistance);
-            if (absDroneDistance < 0.3)
+            if (bluePointer != null)
             {
-               
-                Destroy(bluePointer);
+                if (absDroneDistance < 0.3)
+                {
+
+                    Destroy(bluePointer);
+                }
             }
+
 
             //foreach (GameObject pointer in pointers) 
             //{

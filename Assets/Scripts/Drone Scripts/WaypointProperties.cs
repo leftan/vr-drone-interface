@@ -33,6 +33,7 @@
         private LineRenderer groundpointLine; // Connects the groundpoint to the waypoint
 
         public bool setInterwaypointToggle;
+        //public bool moveWaypoint;
 
         void Start()
         {
@@ -152,6 +153,7 @@
 
             Vector3 groundpoint = new Vector3(this.transform.position.x, world.transform.position.y + modelGroundpoint.transform.localScale.y, this.transform.position.z);
             thisGroundpoint = Instantiate(modelGroundpoint, groundpoint, Quaternion.identity);
+            thisGroundpoint.tag = "Groundpoint";
             thisGroundpoint.transform.localScale = world.GetComponent<ControllerInteractions>().actualScale / 100;
             thisGroundpoint.transform.parent = world.transform;
             groundpointLine = thisGroundpoint.GetComponent<LineRenderer>();

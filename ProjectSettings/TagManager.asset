@@ -23,6 +23,7 @@ TagManager:
   - BluePointer
   - ControllerTooltip
   - TutorialWelcome
+  - Groundpoint
   layers:
   - Default
   - TransparentFX

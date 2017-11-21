@@ -77,6 +77,7 @@
             groundPoint.y = groundPoint.y + 0.5f * world.GetComponent<ControllerInteractions>().actualScale.y;
             Instantiate(drone, groundPoint, Quaternion.identity, world.transform);
             placingDrone = false;
+            GameObject.Find("World").GetComponent<Tutorials>().OnInstantiateDrone();
             //Debug.Log(pointerCollidedWith.point.y + " point");
         }
 

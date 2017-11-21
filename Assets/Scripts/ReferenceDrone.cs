@@ -21,8 +21,6 @@
 
         void Update()
         {
-            Debug.Log(referenceDrone);
-            //Debug.Log(droneMenu);
             if (referenceDrone == null)
             {
                 //droneMenu.SetActive(false);

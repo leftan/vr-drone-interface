@@ -22,7 +22,7 @@
         private GameObject world; // Refers to the ground
         private Vector3 groundPoint; // Vector3 indicating where the pointer is pointing on the ground
         private bool firstClickFinished = false;
-        private bool adjustingHeight = false;
+        public bool adjustingHeight = false;
         private GameObject adjustingWaypoint; // new instantiated waypoint
         private Vector3 currentScale; // Current Scale of the World
         private Vector3 originalScale; // Scale that the world started in

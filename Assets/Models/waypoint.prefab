@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 136277372781703870}
   - component: {fileID: 54895740343813164}
   - component: {fileID: 114879755666982984}
+  - component: {fileID: 114429478651206184}
   m_Layer: 0
   m_Name: waypoint
   m_TagString: Untagged
@@ -132,6 +133,18 @@ MonoBehaviour:
   modelGroundpoint: {fileID: 1072266980392874, guid: fe9c4c5a263cc4144a730d848f5fd6ad,
     type: 2}
   setInterwaypointToggle: 0
+--- !u!114 &114429478651206184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1161822125618724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400c540ef087d574595771a3cdeb9e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWaypointMoved: 0
 --- !u!114 &114879755666982984
 MonoBehaviour:
   m_ObjectHideFlags: 1

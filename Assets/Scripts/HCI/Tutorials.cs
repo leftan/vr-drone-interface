@@ -6,6 +6,14 @@
 
     public class Tutorials : MonoBehaviour
     {
+        //private GameObject welcomeText;
+        //private GameObject stepOneText;
+        //private GameObject stepTwoText;
+        //private GameObject stepThreeText;
+        //private GameObject stepFourText;
+        //private GameObject stepFiveText;
+        //private GameObject stepSixText;
+        //private GameObject stepSevenText;
 
         public GameObject welcomeText;
         public GameObject stepOneText;
@@ -22,6 +30,7 @@
         public GameObject fourthPointer;
 
         public GameObject world;
+
         private int tutorialTimer;
         private int frameCounter;
         private GameObject drone;
@@ -40,12 +49,34 @@
         private int curWaypointNumber;
         private int lasWaypointNumber;
 
+        private static int prevStep = 0;
+        private List<GameObject> stepTexts = new List<GameObject>();
 
         // Use this for initialization
         void Start()
         {
-            welcomeText.SetActive(true);
-            stepOneText.SetActive(false);
+            //welcomeText = gameObject.transform.GetChild(0).gameObject;
+            //stepOneText = gameObject.transform.GetChild(1).gameObject;
+            //stepTwoText = gameObject.transform.GetChild(2).gameObject;
+            //stepThreeText = gameObject.transform.GetChild(3).gameObject;
+            //stepFourText = gameObject.transform.GetChild(4).gameObject;
+            //stepFiveText = gameObject.transform.GetChild(5).gameObject;
+            //stepSixText = gameObject.transform.GetChild(6).gameObject;
+            //stepSevenText = gameObject.transform.GetChild(7).gameObject;
+
+            stepTexts.Add(welcomeText);
+            stepTexts.Add(stepOneText);
+            stepTexts.Add(stepTwoText);
+            stepTexts.Add(stepThreeText);
+            stepTexts.Add(stepFourText);
+            stepTexts.Add(stepFiveText);
+            stepTexts.Add(stepSixText);
+            stepTexts.Add(stepSevenText);
+
+            stepTexts[0].SetActive(true);
+            prevStep = 0;
+
+            stepTexts[1].SetActive(false);
             stepTwoText.SetActive(false);
             stepThreeText.SetActive(false);
             stepFourText.SetActive(false);
@@ -57,7 +88,8 @@
             secondPointer.SetActive(false);
             thirdPointer.SetActive(false);
             fourthPointer.SetActive(false);
-            
+
+
             controller = GameObject.FindGameObjectWithTag("GameController");
             placingDrone = false;
             stepOneFinished = false;
@@ -68,9 +100,6 @@
             indexTriggerOn = false;
 
             lasWaypointNumber = GameObject.FindGameObjectsWithTag("waypoint").Length;
-
-
-
 
 
         }
@@ -87,37 +116,44 @@
             
             if (tutorialTimer + 300 < frameCounter)
             {
-                welcomeText.SetActive(false);
+                stepTexts[0].SetActive(false);
                 placingDrone = controller.GetComponent<VRTK_StraightPointerRenderer>().setDrone;
                 droneMenu = GameObject.FindGameObjectWithTag("DroneMenu");
 
                 if (!stepOneFinished)
                 {
-                    stepOneText.SetActive(true);
+                    stepTexts[1].SetActive(true);
+                    prevStep = 1;
+
                     //Debug.Log("step 1 is on");
                     stepOneFinished = true;
+
                 }
                 else if (placingDrone) 
                 {
                     //Debug.Log("OnGround() " + controller.GetComponent<VRTK_StraightPointerRenderer>().OnGround());
                     
                     //Debug.Log("IndexTrigger " + indexTriggerOn);
-                    if (!stepTwoFinished)
-                    {
+                    //if (!stepTwoFinished)
+                    //{
                         //Debug.Log("step 2 is on");
-                        stepOneText.SetActive(false);
-                        stepTwoText.SetActive(true);
+                        stepTexts[prevStep].SetActive(false);
+                        stepTexts[2].SetActive(true);
+                        prevStep = 2;
+
                         firstPointer.SetActive(true);
                         stepTwoFinished = true;
-                    }
+                    //}
 
                 }
 
                 if (GameObject.FindGameObjectsWithTag("waypoint").Length != 0 && !stepFourFinished)
                     //&& referenceDrone.GetComponent<SetWaypoint>().selected)
-                {   
-                    stepThreeText.SetActive(false);
-                    stepFourText.SetActive(true);
+                {
+                    stepTexts[prevStep].SetActive(false);
+                    stepTexts[4].SetActive(true);
+                    prevStep = 4;
+
                     secondPointer.SetActive(false);
                     
                     stepFourFinished = true;
@@ -129,9 +165,11 @@
                 if (!GameObject.FindGameObjectWithTag("Drone").GetComponentInChildren<SetWaypoint>().adjustingHeight 
                     && !stepFiveFinished && stepFourFinished && !stepSevenFinished && !stepSixFinished)
                 {
-                    stepFourText.SetActive(false);
+                    stepTexts[prevStep].SetActive(false);
                     thirdPointer.SetActive(true);
-                    stepFiveText.SetActive(true);
+                    stepTexts[5].SetActive(true);
+                    prevStep = 5;
+
                     stepFiveFinished = true;
                 }
 
@@ -139,8 +177,10 @@
             
                 if (stepFiveFinished && !stepSixFinished && waypointMoveTime < 1 && !stepSevenFinished)
                 {
-                    stepFiveText.SetActive(false);
-                    stepSixText.SetActive(true);
+                    stepTexts[prevStep].SetActive(false);
+                    stepTexts[6].SetActive(true);
+                    prevStep = 6;
+
                     stepSixFinished = true;
                     fourthPointer.SetActive(true);
                     //lasWaypointNumber = curWaypointNumber;
@@ -152,11 +192,13 @@
                     !GameObject.FindGameObjectWithTag("Drone").GetComponentInChildren<SetWaypoint>().settingInterWaypoint &&
                     GameObject.FindGameObjectsWithTag("waypoint").Length > 2)
                 {
-                    stepSixText.SetActive(false);
-                    stepSevenText.SetActive(true);
+                    stepTexts[prevStep].SetActive(false);
+                    stepTexts[7].SetActive(true);
+                    prevStep = 7;
+
                     //stepSevenFinished = true;
                     //fourthPointer.SetActive(false);
-                   
+
                 }
 
             }
@@ -166,8 +208,11 @@
 
         public void OnInstantiateDrone()
         {
-            stepTwoText.SetActive(false);
-            stepThreeText.SetActive(true);
+            Debug.Log("On instantiate drone");
+            stepTexts[prevStep].SetActive(false);
+            stepTexts[3].SetActive(true);
+            prevStep = 3;
+ 
             firstPointer.SetActive(false);
             secondPointer.SetActive(true);
         }

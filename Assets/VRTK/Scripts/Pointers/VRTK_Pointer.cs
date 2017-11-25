@@ -323,7 +323,7 @@ namespace VRTK
             activateDelayTimer = 0f;
             selectDelayTimer = 0f;
             hoverDurationTimer = 0f;
-            currentActivationState = 0;
+            currentActivationState = 1;
             wasActivated = false;
             willDeactivate = false;
             canClickOnHover = false;

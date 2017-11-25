@@ -101,6 +101,7 @@
             CreateTracer();
             CreateCursor();
             Toggle(false, false);
+            //Toggle(true, true);
             if (controllingPointer)
             {
                 controllingPointer.ResetActivationTimer(true);
@@ -338,6 +339,8 @@
                 }
 
                 ToggleRenderer(controllingPointer.IsPointerActive(), false);
+                //ToggleRenderer(controllingPointer.IsPointerActive(), true);
+
                 UpdateDependencies(actualCursor.transform.position);
             }
         }

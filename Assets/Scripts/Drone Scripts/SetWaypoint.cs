@@ -76,16 +76,17 @@
                 }
 
                 // Allows user to clear the most recently placed waypoint
-                //if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)!=0)
-                //{
-                //    if (clearWaypointsToggle)
-                //    {
-                //        ClearWaypoint();
-                //    }
-                //} else
-                //{
-                //    clearWaypointsToggle = true;
-                //}
+                if (OVRInput.Get(OVRInput.Button.Two) && OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) != 0)
+                {
+                    if (clearWaypointsToggle)
+                    {
+                        ClearWaypoint();
+                    }
+                }
+                else
+                {
+                    clearWaypointsToggle = true;
+                }
             } else
             {
                 // Changes the drones color to indicated that it has been unselected
